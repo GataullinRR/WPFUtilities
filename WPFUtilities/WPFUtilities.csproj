@@ -1,17 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>5b5bad1e-c29e-4898-909c-f679adf094d8</ProjectGuid>
+    <ProjectGuid>{115D86AE-B025-4BAD-9932-BEF1E9D9F9E8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WPFUtilities</RootNamespace>
     <AssemblyName>WPFUtilities</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,26 +33,95 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConverterBindableParameter.cs" />
+    <Compile Include="Converters\BoolLogicMultiConverter.cs" />
+    <Compile Include="Converters\CollapseIfEmptyConverter.cs" />
+    <Compile Include="Converters\DoubleToIntConverter.cs" />
+    <Compile Include="Converters\NotNullToCollapsedConverter.cs" />
+    <Compile Include="Converters\NullToCollapsedConverter.cs" />
+    <Compile Include="Converters\StringToObjectConverter.cs" />
+    <Compile Include="Converters\VisibleIfToStringEqualsConverter.cs" />
+    <Compile Include="Converters\CollapseIfToStringEqualsConverter.cs" />
+    <Compile Include="Converters\DictonaryToValuesConverter.cs" />
+    <Compile Include="Converters\IntToDoubleConverter.cs" />
+    <Compile Include="Converters\WrappingEnumerableConverter.cs" />
+    <Compile Include="MarkupExtensions\CommandExtension.cs" />
+    <Compile Include="MarkupExtensions\DoubleValueBinderExtension.cs" />
+    <Compile Include="MarkupExtensions\IntervalExtension.cs" />
+    <Compile Include="MarkupExtensions\Int32Extension.cs" />
+    <Compile Include="Converters\MarshallersCollectionToViewObjectsConverter.cs" />
+    <Compile Include="Converters\IconToImageSourceConverter.cs" />
+    <Compile Include="Converters\DoubleRoundConvertor.cs" />
+    <Compile Include="Converters\NullableDoubleToStringInvariantConvertor.cs" />
+    <Compile Include="Converters\ObjectToCollectionConverter.cs" />
+    <Compile Include="Types\ActionCommand.cs" />
+    <Compile Include="WPFCommonUtils.cs" />
+    <Compile Include="Extensions\ControlsEx.cs" />
+    <Compile Include="Converters\BoolToVisibilityCollapsedConverter.cs" />
+    <Compile Include="Converters\NullToFalseConverter.cs" />
+    <Compile Include="Converters\ObjectToStringConverter.cs" />
+    <Compile Include="Converters\BoolInvertingConverter.cs" />
+    <Compile Include="Converters\BoolToColorConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\ConverterTemplate.cs" />
+    <Compile Include="Converters\DoubleConverter.cs" />
+    <Compile Include="Converters\IsValidValueToColorConverter.cs" />
+    <Compile Include="Converters\LogicAndConverter.cs" />
+    <Compile Include="Converters\LogicOrConverter.cs" />
+    <Compile Include="Converters\ValueConverterGroup.cs" />
+    <Compile Include="Types\Visual\MarginSetter.cs" />
+    <Compile Include="Types\Visual\Spacing.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WPFStyles\All.txt">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MVVMUtilities\MVVMUtilitiesStandard\MVVMUtilitiesStandard.csproj">
+      <Project>{0d8214a9-2117-4e6c-9332-d2b64db0ee8d}</Project>
+      <Name>MVVMUtilitiesStandard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utilities\UtilitiesStandard\UtilitiesStandard.csproj">
+      <Project>{21573864-2f51-452f-a531-a83845706cb4}</Project>
+      <Name>UtilitiesStandard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Vectors\Vectors\Vectors.csproj">
+      <Project>{839c7d8a-8283-4969-95dd-5e961aa9f922}</Project>
+      <Name>Vectors</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+  </Target>
+</Project>
